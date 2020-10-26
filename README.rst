@@ -1,6 +1,6 @@
-===================
-Network Information
-===================
+=============
+Network Speed
+=============
 
 :Author: Chae DeLaRosa
 

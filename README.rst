@@ -4,7 +4,7 @@ Network Information
 
 :Author: Chae DeLaRosa
 
-This program with measure your network speed and output the result to the console and write it to a json file.
+This program with measure your network speed and write it to json files in a directory with the month and the day. Then it will display a graph of your internet upload and download speeds.
 
 
 Installing

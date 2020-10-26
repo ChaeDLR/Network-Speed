@@ -10,7 +10,7 @@ This program with measure your network speed and write it to json files in a dir
 Installing
 ==========
 
-``git clone https://github.com/ChaeDLR/Network-Information.git``
+``git clone https://github.com/ChaeDLR/Network-Speed.git``
 
 ``python -m venv (Virtual environment folder name)``
 

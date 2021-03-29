@@ -9,11 +9,11 @@ from network_graph import NetworkGraph
 
 
 class Monitor:
-    '''
-        Measure network data
-        Save to json files
-        Display graph of data collected
-    '''
+    """
+    Measure network data
+    Save to json files
+    Display graph of data collected
+    """
 
     def __init__(self):
 
@@ -29,13 +29,13 @@ class Monitor:
         network_graph = NetworkGraph(json_directory)
 
     def get_network_data(self, numOfDataPoints: int):
-        '''
-            Input: How many data points to be measured
-            Store upload and download speeds with the time in a list
-        '''
+        """
+        Input: How many data points to be measured
+        Store upload and download speeds with the time in a list
+        """
         network_data_list = []
         print("Measuring network speeds...")
-        for _ in range(1, numOfDataPoints+1):
+        for _ in range(1, numOfDataPoints + 1):
             current_time = datetime.datetime.now().strftime("%H:%M:%S")
             uploadBits = self.networkSpeed.upload()
             downloadBits = self.networkSpeed.download()
@@ -51,29 +51,46 @@ class Monitor:
 
         todays_date = datetime.date.today()
 
-        month_dict = {1: 'jan', 2: 'feb', 3: 'mar', 4: 'aprl', 5: 'may',
-                      6: 'jun', 7: 'jul', 8: 'aug', 9: 'sep', 10: 'oct', 11: 'nov', 12: 'dec'}
+        month_dict = {
+            1: "jan",
+            2: "feb",
+            3: "mar",
+            4: "aprl",
+            5: "may",
+            6: "jun",
+            7: "jul",
+            8: "aug",
+            9: "sep",
+            10: "oct",
+            11: "nov",
+            12: "dec",
+        }
 
         date = f"{month_dict[todays_date.month]}-{todays_date.day}"
 
         return date
 
     def networkjson(self, datalist: list, directory: str):
-        '''
-            Input: a list of date information, directory to save files
-        '''
+        """
+        Input: a list of date information, directory to save files
+        """
         if not os.path.isdir(directory):
             os.mkdir(directory)
 
         number_of_points = 1
         for dataPoint in datalist:
             networkJsonData = {
-                'time': dataPoint[0], 'uploadSpeed': dataPoint[1], 'downloadSpeed': dataPoint[2]}
-            with open(f'{directory}\\Network_Data_{number_of_points}.json', 'w') as jsonFile:
+                "time": dataPoint[0],
+                "uploadSpeed": dataPoint[1],
+                "downloadSpeed": dataPoint[2],
+            }
+            with open(
+                f"{directory}\\Network_Data_{number_of_points}.json", "w"
+            ) as jsonFile:
                 json.dump(networkJsonData, jsonFile, indent=4, sort_keys=True)
             jsonFile.close()
             number_of_points += 1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     netwokmonitor = Monitor()
